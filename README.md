@@ -8,8 +8,3 @@ In my case, I chose `python` and here are my solutions.
 Please :star: this repo if it helps you:heart:
 
 ![](https://api.visitorbadge.io/api/VisitorHit?user=emlbrg&repo=rosalind_solutions&countColor=%237B1E7A)
-
-<div align="center">
-        <img alt="Visitor Stats" 
-            src="https://widgetbite.com/stats/emlbrg"/>  
-</div>
