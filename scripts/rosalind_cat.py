@@ -74,8 +74,9 @@ def count_noncrossing_matchings(rna):
     
     return total_matchings
 
-fasta_file = '../data/rosalind_cat.txt'
-rna_sequence = parse_fasta_str(fasta_file)
-result = count_noncrossing_matchings(rna_sequence)
-print(result)
+if __name__ == "__main__":
+    fasta_file = '../data/rosalind_cat.txt'
+    rna_sequence = parse_fasta_str(fasta_file)
+    result = count_noncrossing_matchings(rna_sequence)
+    print(result)
 

@@ -11,10 +11,21 @@ Return: The transcribed RNA string of t.
 """
 
 def translate(sequence: str) -> None:
+    """
+    Convert a DNA sequence to its corresponding RNA sequence by replacing
+    all occurrences of 'T' with 'U'.
+
+    Args:
+        sequence (str): A DNA sequence composed of 'A', 'T', 'C', and 'G'.
+
+    Returns:
+        str: The RNA sequence obtained from the input DNA sequence.
+    """
     u = t.replace('T', 'U')
     print(u)
 
-with open('../data/rosalind_rna.txt', 'r') as f:
-    t = f.read()
+if __name__ == '__main__':
+    with open('../data/rosalind_rna.txt', 'r') as f:
+        t = f.read()
 
-translate(t)
+    translate(t)

@@ -28,8 +28,8 @@ def count_dna_nucleotides(sequence: str) -> None:
             count_T += 1
     print(count_A, count_C, count_G, count_T)
 
+if __name__ == '__main__':
+    with open('../data/rosalind_dna.txt', 'r') as f:
+        s = f.read()
 
-with open('../data/rosalind_dna.txt', 'r') as f:
-    s = f.read()
-
-count_dna_nucleotides(s)
+    count_dna_nucleotides(s)

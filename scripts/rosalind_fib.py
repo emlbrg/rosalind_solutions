@@ -11,14 +11,18 @@ When finding the n-th term of a sequence defined by a recurrence relation, we ca
 Given: Positive integers n≤40 and k≤5.
 Return: The total number of rabbit pairs that will be present after n months, if we begin with 1 pair and in each generation, every pair of reproduction-age rabbits produces a litter of k rabbit pairs (instead of only 1 pair).
 """
+from typing import List
 
-def rabbit_pairs(n, k):
+def rabbit_pairs(n: int, k: int) -> List[int]:
     """
     Calculate the number of rabbit pairs after n months given that each pair produces k new pairs each month.
-    
-    :param n: Number of months
-    :param k: Number of new pairs produced by each pair each month
-    :return: Total number of rabbit pairs after n months
+
+    Args:
+        n (int): Number of months.
+        k (int): Number of new pairs produced by each pair each month.
+
+    Returns:
+        List[int]: Total number of rabbit pairs after n months.
     """
     if n == 1:
         return 1
@@ -29,12 +33,31 @@ def rabbit_pairs(n, k):
     dp[1] = 1
     dp[2] = 1
     
-    # Fill the DP table
-    for i in range(3, n + 1):
+    for i in range(3, n + 1):  # fill the DP table
         dp[i] = dp[i - 1] + k * dp[i - 2]
     
     return dp[n]
 
-n = 30
-k = 3
-print(rabbit_pairs(n, k))  # Output: 19
+def read_input(file_path: str) -> tuple:
+    """
+    Reads the input from a text file and returns n and k.
+
+    Args:
+        file_path (str): Path to the input text file.
+
+    Returns:
+        tuple: A tuple containing two integers (n, k) from the file.
+    """
+    with open(file_path, 'r') as file:
+        # Read the first line of the file and split by space
+        data = file.readline().strip().split()
+        n = int(data[0])
+        k = int(data[1])
+        return n, k
+
+if __name__ == '__main__':
+    input_file = '../data/rosalind_fib.txt'
+    n, k = read_input(input_file)
+    result = rabbit_pairs(n, k)
+
+    print(result)

@@ -36,5 +36,4 @@ def translate_rna_to_protein(rna: str) -> str:
 
 if __name__ == '__main__':
     with open('../data/rosalind_prot.txt', 'r') as f:
-        
         print(translate_rna_to_protein(f.readline()))
