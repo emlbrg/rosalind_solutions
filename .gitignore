@@ -3,3 +3,4 @@ EMBOSS-6.6.0
 __pycache__
 .DS_Store
 /scripts/WIP_*
+/scripts/rosalind_meme
