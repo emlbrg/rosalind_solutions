@@ -2,3 +2,4 @@ EMBOSS-6.6.0
 *.ipynb
 __pycache__
 .DS_Store
+/scripts/WIP_*

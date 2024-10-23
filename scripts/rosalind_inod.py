@@ -9,3 +9,25 @@ Even though a binary tree can include nodes having degree 2, an unrooted binary 
 Given: A positive integer n (3≤n≤10000).
 Return: The number of internal nodes of any unrooted binary tree having n leaves.
 """
+def count_internal_nodes(n: int) -> int:
+    """
+    Calculate the number of internal nodes in an unrooted binary tree given the number of leaves.
+
+    Args:
+        n (int): Number of leaves in the binary tree (3 ≤ n ≤ 10000).
+
+    Returns:
+        int: Number of internal nodes in the binary tree.
+    """
+    if n < 3:
+        raise ValueError("The number of leaves must be at least 3.")
+    
+    internal_nodes = n - 2
+    return internal_nodes
+
+if __name__ == '__main__':
+     with open('../data/rosalind_inod.txt') as f:
+         n = int(f.read().strip())
+         internal_nodes_count = count_internal_nodes(n)
+         print(internal_nodes_count)
+
