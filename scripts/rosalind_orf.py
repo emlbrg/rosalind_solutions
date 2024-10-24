@@ -11,14 +11,11 @@ An open reading frame (ORF) is one which starts from the start codon and ends by
 Given: A DNA string s of length at most 1 kbp in FASTA format.
 Return: Every distinct candidate protein string that can be translated from ORFs of s. Strings can be returned in any order.
 """
-
 from Bio.Seq import Seq
-from Bio import SeqIO
+from typing import List
+from tools import parse_fasta
 
-# Codon table for translating DNA to protein
-{'S': ['TCT', 'TCC', 'TCA', 'TCG', 'AGT', 'AGC'], 'L': ['TTA', 'TTG', 'CTT', 'CTC', 'CTA', 'CTG'], 'C': ['TGT', 'TGC'], 'W': ['TGG'], 'E': ['GAA', 'GAG'], 'D': ['GAT', 'GAC'], 'P': ['CCT', 'CCC', 'CCA', 'CCG'], 'V': ['GTT', 'GTC', 'GTA', 'GTG'], 'N': ['AAT', 'AAC'], 'M': ['ATG'], 'K': ['AAA', 'AAG'], 'Y': ['TAT', 'TAC'], 'I': ['ATT', 'ATC', 'ATA'], 'Q': ['CAA', 'CAG'], 'F': ['TTT', 'TTC'], 'R': ['CGT', 'CGC', 'CGA', 'CGG', 'AGA', 'AGG'], 'T': ['ACT', 'ACC', 'ACA', 'ACG'], '*': ['TAA', 'TAG', 'TGA'], 'A': ['GCT', 'GCC', 'GCA', 'GCG'], 'G': ['GGT', 'GGC', 'GGA', 'GGG'], 'H': ['CAT', 'CAC']}
-
-def find_orf_translate(sequences, table=1, min_pro_len=1):
+def find_orf_translate(sequences: dict, table: int=1, min_pro_len: int=1) -> List:
     """
     Find long proteins from a dictionary of sequences and return detailed information.
 
@@ -50,19 +47,6 @@ def find_orf_translate(sequences, table=1, min_pro_len=1):
                             all_proteins.append((seq_id, strand, frame, start, end, trimmed_pro))
 
     return all_proteins
-
-def parse_fasta(fasta_file):
-    sequences = {}
-    current_sequence = None
-    with open(fasta_file, 'r') as file:
-        for line in file:
-            line = line.strip()
-            if line.startswith('>'):
-                current_sequence = line[1:]
-                sequences[current_sequence] = ''
-            else:
-                sequences[current_sequence] += line
-    return sequences
 
 if __name__ == '__main__':
     fasta_file =  '../data/rosalind_orf.txt'
